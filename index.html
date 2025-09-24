@@ -26,28 +26,36 @@
     /* Container */
     .container { max-width:1300px; margin:2rem auto; padding:0 1rem; }
 
-    /* Level Cards in 1 Row */
+    /* Level Cards */
     .levels {
       display:grid; grid-template-columns: repeat(4, 1fr);
       gap:1.5rem; margin-top:2rem;
     }
     .card {
-      background:white; border-radius:14px; padding:2rem 1.2rem;
+      background:white; border-radius:14px; padding:2rem 1.5rem;
       box-shadow:0 6px 15px rgba(0,0,0,0.12);
-      text-align:center; height:100%;
+      display:flex; flex-direction:column; justify-content:space-between;
       transition:transform 0.2s, box-shadow 0.2s;
+      text-align:center;
     }
     .card:hover {
       transform: translateY(-6px);
       box-shadow:0 12px 22px rgba(0,0,0,0.18);
     }
-    .card h2 { color:#2d89ff; margin-top:0; font-size:1.3rem; }
-    .card p { font-size:0.9rem; color:#555; min-height:60px; line-height:1.4; }
+    .icon {
+      font-size:2rem; margin-bottom:0.8rem; color:#2d89ff;
+    }
+    .card h2 { color:#2d89ff; margin:0 0 0.6rem; font-size:1.3rem; }
+    .card p {
+      font-size:0.9rem; color:#555; line-height:1.4;
+      flex-grow:1; min-height:55px; /* jaga agar seragam */
+      margin:0 0 1rem;
+    }
     .card a {
-      display:inline-block; margin-top:1rem; padding:10px 18px;
+      display:inline-block; padding:10px 18px;
       background: linear-gradient(135deg, #2d89ff, #5da9ff);
       color:white; text-decoration:none; border-radius:8px;
-      font-weight:600;
+      font-weight:600; transition: background 0.3s;
     }
     .card a:hover {
       background: linear-gradient(135deg, #1c63c7, #3f8cff);
@@ -76,23 +84,35 @@
   <div class="container">
     <div class="levels">
       <div class="card">
-        <h2>Level 1 (A1)</h2>
-        <p>Vocabulary dasar, kalimat sederhana, komunikasi sehari-hari.</p>
+        <div>
+          <div class="icon">📘</div>
+          <h2>Level 1 (A1)</h2>
+          <p>Dasar kosakata & kalimat sederhana untuk komunikasi sehari-hari.</p>
+        </div>
         <a href="level-1/index.html">Lihat Materi</a>
       </div>
       <div class="card">
-        <h2>Level 2 (A2–B1)</h2>
-        <p>Struktur kalimat lebih kompleks, tenses baru, teks pendek.</p>
+        <div>
+          <div class="icon">📗</div>
+          <h2>Level 2 (A2–B1)</h2>
+          <p>Kalimat lebih kompleks, pengenalan tenses baru & teks pendek.</p>
+        </div>
         <a href="level-2/index.html">Lihat Materi</a>
       </div>
       <div class="card">
-        <h2>Level 3 (B2)</h2>
-        <p>Tenses kompleks, kalimat majemuk, academic text.</p>
+        <div>
+          <div class="icon">📙</div>
+          <h2>Level 3 (B2)</h2>
+          <p>Penguasaan tenses kompleks & pemahaman teks akademik.</p>
+        </div>
         <a href="level-3/index.html">Lihat Materi</a>
       </div>
       <div class="card">
-        <h2>Level 4 (C1)</h2>
-        <p>Academic grammar, critical thinking, writing & debating.</p>
+        <div>
+          <div class="icon">📕</div>
+          <h2>Level 4 (C1)</h2>
+          <p>Academic grammar, critical thinking, writing & debating.</p>
+        </div>
         <a href="level-4/index.html">Lihat Materi</a>
       </div>
     </div>
