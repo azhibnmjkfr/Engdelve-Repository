@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Level 3 - Engdelve</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      color: #333;
+      background: #fff7ed;
+      background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cg stroke-width='2' stroke='%23f97316' opacity='0.1'%3E%3Cline x1='0' y1='200' x2='200' y2='0'/%3E%3Cline x1='-20' y1='180' x2='180' y2='-20'/%3E%3C/g%3E%3Cg stroke-width='2' stroke='%23fb923c' opacity='0.1'%3E%3Cline x1='50' y1='200' x2='250' y2='0'/%3E%3Cline x1='-50' y1='150' x2='150' y2='-50'/%3E%3C/g%3E%3Cg stroke-width='2' stroke='%23c2410c' opacity='0.08'%3E%3Cline x1='20' y1='220' x2='220' y2='20'/%3E%3C/g%3E%3C/svg%3E");
+      background-repeat: repeat;
+    }
+
+    header {
+      background: linear-gradient(135deg, #f97316 0%, #fb923c 50%, #c2410c 100%);
+      color: white;
+      text-align: center;
+      padding: 3rem 1rem;
+      position: relative;
+      overflow: hidden;
+      animation: fadeIn 1s ease-out;
+    }
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cg stroke-width='1' stroke='%23ffffff' opacity='0.15'%3E%3Cline x1='0' y1='200' x2='200' y2='0'/%3E%3Cline x1='-30' y1='170' x2='170' y2='-30'/%3E%3Cline x1='60' y1='210' x2='260' y2='10'/%3E%3C/g%3E%3C/svg%3E");
+      background-repeat: repeat;
+    }
+    header::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.3);
+    }
+    header h1, header p {
+      position: relative;
+      z-index: 1;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    header p {
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .accordion {
+      background: white;
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .accordion:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+    }
+    .accordion.active::after {
+      content: '▲';
+      font-size: 1.2rem;
+      color: #f97316;
+    }
+    .accordion::after {
+      content: '▼';
+      font-size: 1.2rem;
+      color: #f97316;
+    }
+    .accordion .icon {
+      font-size: 1.8rem;
+      margin-right: 1rem;
+      color: #f97316;
+    }
+    .accordion h2 {
+      font-size: 1.4rem;
+      color: #f97316;
+      margin: 0;
+      flex-grow: 1;
+    }
+
+    .panel {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      background: white;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: max-height 0.35s ease, opacity 0.35s ease;
+    }
+    .panel.active {
+      max-height: 2000px;
+      opacity: 1;
+      padding: 1.5rem;
+    }
+
+    .materi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .materi {
+      background: #f8fafc;
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .materi:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+    .materi strong {
+      font-size: 1rem;
+      color: #333;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .actions {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    .view {
+      padding: 8px 16px;
+      background: linear-gradient(135deg, #f97316, #fb923c);
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: background 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .view::before {
+      content: '👁️';
+      font-size: 0.8rem;
+    }
+    .view:hover {
+      background: linear-gradient(135deg, #c2410c, #f97316);
+    }
+    .download {
+      padding: 8px 16px;
+      background: linear-gradient(135deg, #fb923c, #fed7aa);
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: background 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .download::before {
+      content: '⬇️';
+      font-size: 0.8rem;
+    }
+    .download:hover {
+      background: linear-gradient(135deg, #c2410c, #fb923c);
+    }
+
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 10px 18px;
+      background: linear-gradient(135deg, #f97316, #fb923c);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background 0.3s;
+      margin-top: 1.5rem;
+    }
+    .back-button:hover {
+      background: linear-gradient(135deg, #c2410c, #f97316);
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.9rem;
+      color: #777;
+      background: #fff1e6;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 1000px) {
+      .materi-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      }
+    }
+    @media (max-width: 600px) {
+      .materi-grid {
+        grid-template-columns: 1fr;
+      }
+      header h1 {
+        font-size: 2rem;
+      }
+      header p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Level 3 – Lanjutan (B2)</h1>
+    <p>Fokus: Tenses kompleks, kalimat majemuk, teks akademik.</p>
+  </header>
+
+  <div class="container">
+    <!-- Vocabulary -->
+    <div class="accordion">
+      <span class="icon">📙</span>
+      <h2>Extended Vocabulary</h2>
+    </div>
+    <div class="panel">
+      <div class="materi-grid">
+        <div class="materi"><strong>Technology</strong><div class="actions"><a class="view" href="#">View</a><a class="download" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Environment</strong><div class="actions"><a class="view" href="#">View</a><a class="download" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Health</strong><div class="actions"><a class="view" href="#">View</a><a class="download" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Work & Professions</strong><div class="actions"><a class="view" href="#">View</a><a class="download" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Media & Communication</strong><div class="actions"><a class="view" href="#">View</a><a class="download" href="download.html">Download</a></div></div>
+      </div>
+    </div>
+
+    <!-- Grammar -->
+    <div class="accordion">
+      <span class="icon">✍️</span>
+      <h2>Grammar & Structure</h2>
+    </div>
+    <div class="panel">
+      <div class="materi-grid">
+        <div class="materi"><strong>Present Perfect</strong><div class="actions"><a class="view" href="#">View</a><a class="download" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Past Continuous</strong><div class="actions"><a class="view" href="#">View</a><a class="download" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Past Perfect</strong><div class="actions"><a class="view" href="#">View</a><a class="download" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Passive Voice</strong><div class="actions"><a class="view" href="#">View</a><a class="download" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Conditional Sentences</strong><div class="actions"><a class="view" href="#">View</a><a class="download" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Reported Speech</strong><div class="actions"><a class="view" href="#">View</a><a class="download" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Relative Clauses</strong><div class="actions"><a class="view" href="#">View</a><a class="download" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Gerunds & Infinitives</strong><div class="actions"><a class="view" href="#">View</a><a class="download" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Conjunctions</strong><div class="actions"><a class="view" href="#">View</a><a class="download" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Direct & Indirect Questions</strong><div class="actions"><a class="view" href="#">View</a><a class="download" href="download.html">Download</a></div></div>
+      </div>
+    </div>
+
+    <!-- Functions -->
+    <div class="accordion">
+      <span class="icon">💬</span>
+      <h2>Functions</h2>
+    </div>
+    <div class="panel">
+      <div class="materi-grid">
+        <div class="materi"><strong>Expressing Agreement & Disagreement</strong><div class="actions"><a class="view" href="#">View</a><a class="download" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Giving Opinions & Suggestions</strong><div class="actions"><a class="view" href="#">View</a><a class="download" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Making Predictions & Assumptions</strong><div class="actions"><a class="view" href="#">View</a><a class="download" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Expressing Hopes & Wishes</strong><div class="actions"><a class="view" href="#">View</a><a class="download" href="download.html">Download</a></div></div>
+      </div>
+    </div>
+
+    <!-- Text Types -->
+    <div class="accordion">
+      <span class="icon">📄</span>
+      <h2>Text Types</h2>
+    </div>
+    <div class="panel">
+      <div class="materi-grid">
+        <div class="materi"><strong>Exposition Text</strong><div class="actions"><a class="view" href="#">View</a><a class="download" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Discussion Text</strong><div class="actions"><a class="view" href="#">View</a><a class="download" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Explanation Text</strong><div class="actions"><a class="view" href="#">View</a><a class="download" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>News Item Text</strong><div class="actions"><a class="view" href="#">View</a><a class="download" href="download.html">Download</a></div></div>
+      </div>
+    </div>
+
+    <a class="back-button" href="../index.html">
+      <span>←</span> Kembali ke Dashboard
+    </a>
+  </div>
+
+  <footer>
+    © 2025 Engdelve Repository — Ahmad Zaman Huri
+  </footer>
+
+  <script>
+    const accordions = document.querySelectorAll(".accordion");
+    accordions.forEach((btn) => {
+      btn.addEventListener("click", function () {
+        const isActive = this.classList.contains("active");
+        accordions.forEach((b) => {
+          b.classList.remove("active");
+          b.nextElementSibling.classList.remove("active");
+        });
+        if (!isActive) {
+          this.classList.add("active");
+          this.nextElementSibling.classList.add("active");
+        }
+      });
+    });
+  </script>
+</body>
+</html>
