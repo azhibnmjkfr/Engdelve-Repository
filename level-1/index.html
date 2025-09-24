@@ -53,24 +53,46 @@
       transform: translateY(-2px);
       box-shadow: 0 3px 5px rgba(0, 0, 0, 0.08);
     }
+    .view {
+      display: inline-block;
+      padding: 10px 18px;
+      background: linear-gradient(135deg, #2d89ff, #5da9ff);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+    .view:hover {
+      background: linear-gradient(135deg, #1c63c7, #3f8cff);
+    }
     .download {
-      background: linear-gradient(90deg, #f97316, #ea580c);
-      transition: all 0.25s ease;
+      display: inline-block;
+      padding: 10px 18px;
+      background: linear-gradient(135deg, #2d89ff, #5da9ff);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background 0.3s;
     }
     .download:hover {
-      background: linear-gradient(90deg, #ea580c, #d97706);
-      transform: scale(1.05);
+      background: linear-gradient(135deg, #1c63c7, #3f8cff);
     }
     .back-button {
-      background: linear-gradient(90deg, #2563eb, #1d4ed8);
-      transition: all 0.25s ease;
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
+      padding: 10px 18px;
+      background: linear-gradient(135deg, #2d89ff, #5da9ff);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background 0.3s;
     }
     .back-button:hover {
-      background: linear-gradient(90deg, #1d4ed8, #1e3a8a);
-      transform: translateX(-3px);
+      background: linear-gradient(135deg, #1c63c7, #3f8cff);
     }
     .footer {
       border-top: 1px solid #e5e7eb;
@@ -81,73 +103,66 @@
   <div class="max-w-5xl w-full mx-4 my-6 p-6 bg-white rounded-xl shadow-lg">
     <h1 class="text-3xl font-bold text-blue-700 mb-2">Level 1 – Dasar (A1)</h1>
     <p class="text-gray-600 mb-6 text-base">Fokus: Vocabulary dasar, kalimat sederhana, komunikasi sehari-hari.</p>
-
     <!-- Accordion: Vocabulary -->
     <button class="accordion w-full bg-blue-600 text-white font-semibold py-3 px-4 rounded-lg flex justify-between items-center text-base">
       📘 Basic Vocabulary
     </button>
     <div class="panel bg-white border border-gray-200 rounded-lg mb-3 p-4">
       <div class="materi-grid">
-        <div class="materi"><strong>Alphabet</strong><div class="actions mt-2"><a class="view bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded-md text-sm" href="#">View</a><a class="download text-white px-3 py-1 rounded-md text-sm ml-2" href="download.html">Download</a></div></div>
-        <div class="materi"><strong>Numbers</strong><div class="actions mt-2"><a class="view bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded-md text-sm" href="#">View</a><a class="download text-white px-3 py-1 rounded-md text-sm ml-2" href="download.html">Download</a></div></div>
-        <div class="materi"><strong>Days & Months</strong><div class="actions mt-2"><a class="view bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded-md text-sm" href="#">View</a><a class="download text-white px-3 py-1 rounded-md text-sm ml-2" href="download.html">Download</a></div></div>
-        <div class="materi"><strong>Colors</strong><div class="actions mt-2"><a class="view bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded-md text-sm" href="#">View</a><a class="download text-white px-3 py-1 rounded-md text-sm ml-2" href="download.html">Download</a></div></div>
-        <div class="materi"><strong>Family</strong><div class="actions mt-2"><a class="view bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded-md text-sm" href="#">View</a><a class="download text-white px-3 py-1 rounded-md text-sm ml-2" href="download.html">Download</a></div></div>
-        <div class="materi"><strong>Animals</strong><div class="actions mt-2"><a class="view bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded-md text-sm" href="#">View</a><a class="download text-white px-3 py-1 rounded-md text-sm ml-2" href="download.html">Download</a></div></div>
-        <div class="materi"><strong>Objects</strong><div class="actions mt-2"><a class="view bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded-md text-sm" href="#">View</a><a class="download text-white px-3 py-1 rounded-md text-sm ml-2" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Alphabet</strong><div class="actions mt-2"><a class="view" href="#">View</a><a class="download ml-2" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Numbers</strong><div class="actions mt-2"><a class="view" href="#">View</a><a class="download ml-2" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Days & Months</strong><div class="actions mt-2"><a class="view" href="#">View</a><a class="download ml-2" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Colors</strong><div class="actions mt-2"><a class="view" href="#">View</a><a class="download ml-2" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Family</strong><div class="actions mt-2"><a class="view" href="#">View</a><a class="download ml-2" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Animals</strong><div class="actions mt-2"><a class="view" href="#">View</a><a class="download ml-2" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Objects</strong><div class="actions mt-2"><a class="view" href="#">View</a><a class="download ml-2" href="download.html">Download</a></div></div>
       </div>
     </div>
-
     <!-- Accordion: Grammar -->
     <button class="accordion w-full bg-blue-600 text-white font-semibold py-3 px-4 rounded-lg flex justify-between items-center text-base">
       ✍️ Grammar & Structure
     </button>
     <div class="panel bg-white border border-gray-200 rounded-lg mb-3 p-4">
       <div class="materi-grid">
-        <div class="materi"><strong>Be (am, is, are)</strong><div class="actions mt-2"><a class="view bg-green-500 text-white px-3 py-1 rounded-md text-sm hover:bg-green-600" href="#">View</a><a class="download text-white px-3 py-1 rounded-md text-sm ml-2" href="download.html">Download</a></div></div>
-        <div class="materi"><strong>Nouns & Pronouns</strong><div class="actions mt-2"><a class="view bg-green-500 text-white px-3 py-1 rounded-md text-sm hover:bg-green-600" href="#">View</a><a class="download text-white px-3 py-1 rounded-md text-sm ml-2" href="download.html">Download</a></div></div>
-        <div class="materi"><strong>Articles (a, an, the)</strong><div class="actions mt-2"><a class="view bg-green-500 text-white px-3 py-1 rounded-md text-sm hover:bg-green-600" href="#">View</a><a class="download text-white px-3 py-1 rounded-md text-sm ml-2" href="download.html">Download</a></div></div>
-        <div class="materi"><strong>Adjectives</strong><div class="actions mt-2"><a class="view bg-green-500 text-white px-3 py-1 rounded-md text-sm hover:bg-green-600" href="#">View</a><a class="download text-white px-3 py-1 rounded-md text-sm ml-2" href="download.html">Download</a></div></div>
-        <div class="materi"><strong>Simple Present</strong><div class="actions mt-2"><a class="view bg-green-500 text-white px-3 py-1 rounded-md text-sm hover:bg-green-600" href="#">View</a><a class="download text-white px-3 py-1 rounded-md text-sm ml-2" href="download.html">Download</a></div></div>
-        <div class="materi"><strong>There is / There are</strong><div class="actions mt-2"><a class="view bg-green-500 text-white px-3 py-1 rounded-md text-sm hover:bg-green-600" href="#">View</a><a class="download text-white px-3 py-1 rounded-md text-sm ml-2" href="download.html">Download</a></div></div>
-        <div class="materi"><strong>Possessive</strong><div class="actions mt-2"><a class="view bg-green-500 text-white px-3 py-1 rounded-md text-sm hover:bg-green-600" href="#">View</a><a class="download text-white px-3 py-1 rounded-md text-sm ml-2" href="download.html">Download</a></div></div>
-        <div class="materi"><strong>Imperatives</strong><div class="actions mt-2"><a class="view bg-green-500 text-white px-3 py-1 rounded-md text-sm hover:bg-green-600" href="#">View</a><a class="download text-white px-3 py-1 rounded-md text-sm ml-2" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Be (am, is, are)</strong><div class="actions mt-2"><a class="view" href="#">View</a><a class="download ml-2" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Nouns & Pronouns</strong><div class="actions mt-2"><a class="view" href="#">View</a><a class="download ml-2" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Articles (a, an, the)</strong><div class="actions mt-2"><a class="view" href="#">View</a><a class="download ml-2" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Adjectives</strong><div class="actions mt-2"><a class="view" href="#">View</a><a class="download ml-2" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Simple Present</strong><div class="actions mt-2"><a class="view" href="#">View</a><a class="download ml-2" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>There is / There are</strong><div class="actions mt-2"><a class="view" href="#">View</a><a class="download ml-2" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Possessive</strong><div class="actions mt-2"><a class="view" href="#">View</a><a class="download ml-2" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Imperatives</strong><div class="actions mt-2"><a class="view" href="#">View</a><a class="download ml-2" href="download.html">Download</a></div></div>
       </div>
     </div>
-
     <!-- Accordion: Functions -->
     <button class="accordion w-full bg-blue-600 text-white font-semibold py-3 px-4 rounded-lg flex justify-between items-center text-base">
       💬 Functions
     </button>
     <div class="panel bg-white border border-gray-200 rounded-lg mb-3 p-4">
       <div class="materi-grid">
-        <div class="materi"><strong>Greetings & Introductions</strong><div class="actions mt-2"><a class="view bg-green-500 text-white px-3 py-1 rounded-md text-sm hover:bg-green-600" href="#">View</a><a class="download text-white px-3 py-1 rounded-md text-sm ml-2" href="download.html">Download</a></div></div>
-        <div class="materi"><strong>Personal Information</strong><div class="actions mt-2"><a class="view bg-green-500 text-white px-3 py-1 rounded-md text-sm hover:bg-green-600" href="#">View</a><a class="download text-white px-3 py-1 rounded-md text-sm ml-2" href="download.html">Download</a></div></div>
-        <div class="materi"><strong>Daily Activities</strong><div class="actions mt-2"><a class="view bg-green-500 text-white px-3 py-1 rounded-md text-sm hover:bg-green-600" href="#">View</a><a class="download text-white px-3 py-1 rounded-md text-sm ml-2" href="download.html">Download</a></div></div>
-        <div class="materi"><strong>Likes & Dislikes</strong><div class="actions mt-2"><a class="view bg-green-500 text-white px-3 py-1 rounded-md text-sm hover:bg-green-600" href="#">View</a><a class="download text-white px-3 py-1 rounded-md text-sm ml-2" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Greetings & Introductions</strong><div class="actions mt-2"><a class="view" href="#">View</a><a class="download ml-2" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Personal Information</strong><div class="actions mt-2"><a class="view" href="#">View</a><a class="download ml-2" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Daily Activities</strong><div class="actions mt-2"><a class="view" href="#">View</a><a class="download ml-2" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Likes & Dislikes</strong><div class="actions mt-2"><a class="view" href="#">View</a><a class="download ml-2" href="download.html">Download</a></div></div>
       </div>
     </div>
-
     <!-- Accordion: Text Types -->
     <button class="accordion w-full bg-blue-600 text-white font-semibold py-3 px-4 rounded-lg flex justify-between items-center text-base">
       📄 Text Types
     </button>
     <div class="panel bg-white border border-gray-200 rounded-lg mb-3 p-4">
       <div class="materi-grid">
-        <div class="materi"><strong>Descriptive Text</strong><div class="actions mt-2"><a class="view bg-green-500 text-white px-3 py-1 rounded-md text-sm hover:bg-green-600" href="#">View</a><a class="download text-white px-3 py-1 rounded-md text-sm ml-2" href="download.html">Download</a></div></div>
-        <div class="materi"><strong>Simple Dialogues</strong><div class="actions mt-2"><a class="view bg-green-500 text-white px-3 py-1 rounded-md text-sm hover:bg-green-600" href="#">View</a><a class="download text-white px-3 py-1 rounded-md text-sm ml-2" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Descriptive Text</strong><div class="actions mt-2"><a class="view" href="#">View</a><a class="download ml-2" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Simple Dialogues</strong><div class="actions mt-2"><a class="view" href="#">View</a><a class="download ml-2" href="download.html">Download</a></div></div>
       </div>
     </div>
-
-    <a class="back-button text-white font-semibold px-4 py-2 rounded-md mt-6" href="../index.html">
+    <a class="back-button font-semibold px-4 py-2 rounded-md mt-6" href="../index.html">
       <span>←</span> Kembali ke Dashboard
     </a>
-
     <footer class="footer mt-8 pt-4 text-center text-gray-500 text-sm">
       © 2025 Engdelve Repository — Ahmad Zaman Huri
     </footer>
   </div>
-
   <script>
     const accordions = document.querySelectorAll(".accordion");
     accordions.forEach((btn) => {
