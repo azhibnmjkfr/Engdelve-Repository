@@ -4,81 +4,199 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Level 1 - Engdelve</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
     body {
-      background: linear-gradient(to bottom right, #eff6ff, #f0f9ff);
-      background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cg stroke-width='3' stroke='%23dc2626' opacity='0.07'%3E%3Cline x1='0' y1='200' x2='200' y2='0'/%3E%3C/g%3E%3Cg stroke-width='3' stroke='%237b1c1c' opacity='0.07'%3E%3Cline x1='-50' y1='200' x2='150' y2='0'/%3E%3Cline x1='50' y1='200' x2='250' y2='0'/%3E%3C/g%3E%3C/svg%3E");
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      color: #333;
+      background: #f0f3f9;
+      background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cg stroke-width='2' stroke='%232d89ff' opacity='0.1'%3E%3Cline x1='0' y1='200' x2='200' y2='0'/%3E%3Cline x1='-20' y1='180' x2='180' y2='-20'/%3E%3C/g%3E%3Cg stroke-width='2' stroke='%235da9ff' opacity='0.1'%3E%3Cline x1='50' y1='200' x2='250' y2='0'/%3E%3Cline x1='-50' y1='150' x2='150' y2='-50'/%3E%3C/g%3E%3Cg stroke-width='2' stroke='%231c63c7' opacity='0.08'%3E%3Cline x1='20' y1='220' x2='220' y2='20'/%3E%3C/g%3E%3C/svg%3E");
       background-repeat: repeat;
     }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #2d89ff 0%, #5da9ff 50%, #1c63c7 100%);
+      color: white;
+      text-align: center;
+      padding: 3rem 1rem;
+      position: relative;
+      overflow: hidden;
+      animation: fadeIn 1s ease-out;
+    }
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cg stroke-width='1' stroke='%23ffffff' opacity='0.15'%3E%3Cline x1='0' y1='200' x2='200' y2='0'/%3E%3Cline x1='-30' y1='170' x2='170' y2='-30'/%3E%3Cline x1='60' y1='210' x2='260' y2='10'/%3E%3C/g%3E%3C/svg%3E");
+      background-repeat: repeat;
+    }
+    header::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.3);
+    }
+    header h1, header p {
+      position: relative;
+      z-index: 1;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    header p {
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    /* Accordion */
     .accordion {
-      transition: all 0.25s ease;
-      margin-bottom: 0.4rem;
+      background: white;
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: transform 0.2s, box-shadow 0.2s;
     }
     .accordion:hover {
-      background: linear-gradient(90deg, #2563eb, #1d4ed8);
-      transform: scale(1.01);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
     }
     .accordion.active::after {
       content: '▲';
-      float: right;
+      font-size: 1.2rem;
+      color: #2d89ff;
     }
     .accordion::after {
       content: '▼';
-      float: right;
+      font-size: 1.2rem;
+      color: #2d89ff;
     }
+    .accordion .icon {
+      font-size: 1.8rem;
+      margin-right: 1rem;
+      color: #2d89ff;
+    }
+    .accordion h2 {
+      font-size: 1.4rem;
+      color: #2d89ff;
+      margin: 0;
+      flex-grow: 1;
+    }
+
+    /* Panel */
     .panel {
-      transition: max-height 0.35s ease, opacity 0.35s ease;
       max-height: 0;
       opacity: 0;
       overflow: hidden;
+      background: white;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: max-height 0.35s ease, opacity 0.35s ease;
     }
     .panel.active {
-      max-height: 1500px;
+      max-height: 2000px;
       opacity: 1;
+      padding: 1.5rem;
     }
+
+    /* Materi Grid */
     .materi-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 0.6rem;
+      gap: 1rem;
     }
     .materi {
-      transition: all 0.25s ease;
-      padding: 0.75rem;
-      border-radius: 6px;
-      background: #fff;
+      background: #f8fafc;
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
     }
     .materi:hover {
-      background-color: #f8fafc;
-      transform: translateY(-2px);
-      box-shadow: 0 3px 5px rgba(0, 0, 0, 0.08);
+      transform: translateY(-4px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+    .materi strong {
+      font-size: 1rem;
+      color: #333;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .actions {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
     }
     .view {
-      display: inline-block;
-      padding: 10px 18px;
-      background: linear-gradient(135deg, #2d89ff, #5da9ff);
+      padding: 8px 16px;
+      background: linear-gradient(135deg, #10b981, #6ee7b7);
       color: white;
       text-decoration: none;
-      border-radius: 8px;
+      border-radius: 6px;
+      font-size: 0.9rem;
       font-weight: 600;
       transition: background 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .view::before {
+      content: '👁️';
+      font-size: 0.8rem;
     }
     .view:hover {
-      background: linear-gradient(135deg, #1c63c7, #3f8cff);
+      background: linear-gradient(135deg, #047857, #34d399);
     }
     .download {
-      display: inline-block;
-      padding: 10px 18px;
-      background: linear-gradient(135deg, #2d89ff, #5da9ff);
+      padding: 8px 16px;
+      background: linear-gradient(135deg, #f59e0b, #fbbf24);
       color: white;
       text-decoration: none;
-      border-radius: 8px;
+      border-radius: 6px;
+      font-size: 0.9rem;
       font-weight: 600;
       transition: background 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .download::before {
+      content: '⬇️';
+      font-size: 0.8rem;
     }
     .download:hover {
-      background: linear-gradient(135deg, #1c63c7, #3f8cff);
+      background: linear-gradient(135deg, #d97706, #facc15);
     }
+
+    /* Back Button */
     .back-button {
       display: inline-flex;
       align-items: center;
@@ -90,79 +208,118 @@
       border-radius: 8px;
       font-weight: 600;
       transition: background 0.3s;
+      margin-top: 1.5rem;
     }
     .back-button:hover {
       background: linear-gradient(135deg, #1c63c7, #3f8cff);
     }
-    .footer {
-      border-top: 1px solid #e5e7eb;
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.9rem;
+      color: #777;
+      background: #e6ecf9;
+      margin-top: 2rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 1000px) {
+      .materi-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      }
+    }
+    @media (max-width: 600px) {
+      .materi-grid {
+        grid-template-columns: 1fr;
+      }
+      header h1 {
+        font-size: 2rem;
+      }
+      header p {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
-<body class="font-sans text-gray-800 min-h-screen flex justify-center">
-  <div class="max-w-5xl w-full mx-4 my-6 p-6 bg-white rounded-xl shadow-lg">
-    <h1 class="text-3xl font-bold text-blue-700 mb-2">Level 1 – Dasar (A1)</h1>
-    <p class="text-gray-600 mb-6 text-base">Fokus: Vocabulary dasar, kalimat sederhana, komunikasi sehari-hari.</p>
+<body>
+  <header>
+    <h1>Level 1 – Dasar (A1)</h1>
+    <p>Fokus: Vocabulary dasar, kalimat sederhana, komunikasi sehari-hari.</p>
+  </header>
+
+  <div class="container">
     <!-- Accordion: Vocabulary -->
-    <button class="accordion w-full bg-blue-600 text-white font-semibold py-3 px-4 rounded-lg flex justify-between items-center text-base">
-      📘 Basic Vocabulary
-    </button>
-    <div class="panel bg-white border border-gray-200 rounded-lg mb-3 p-4">
+    <div class="accordion">
+      <span class="icon">📘</span>
+      <h2>Basic Vocabulary</h2>
+    </div>
+    <div class="panel">
       <div class="materi-grid">
-        <div class="materi"><strong>Alphabet</strong><div class="actions mt-2"><a class="view" href="#">View</a><a class="download ml-2" href="download.html">Download</a></div></div>
-        <div class="materi"><strong>Numbers</strong><div class="actions mt-2"><a class="view" href="#">View</a><a class="download ml-2" href="download.html">Download</a></div></div>
-        <div class="materi"><strong>Days & Months</strong><div class="actions mt-2"><a class="view" href="#">View</a><a class="download ml-2" href="download.html">Download</a></div></div>
-        <div class="materi"><strong>Colors</strong><div class="actions mt-2"><a class="view" href="#">View</a><a class="download ml-2" href="download.html">Download</a></div></div>
-        <div class="materi"><strong>Family</strong><div class="actions mt-2"><a class="view" href="#">View</a><a class="download ml-2" href="download.html">Download</a></div></div>
-        <div class="materi"><strong>Animals</strong><div class="actions mt-2"><a class="view" href="#">View</a><a class="download ml-2" href="download.html">Download</a></div></div>
-        <div class="materi"><strong>Objects</strong><div class="actions mt-2"><a class="view" href="#">View</a><a class="download ml-2" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Alphabet</strong><div class="actions"><a class="view" href="#">View</a><a class="download" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Numbers</strong><div class="actions"><a class="view" href="#">View</a><a class="download" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Days & Months</strong><div class="actions"><a class="view" href="#">View</a><a class="download" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Colors</strong><div class="actions"><a class="view" href="#">View</a><a class="download" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Family</strong><div class="actions"><a class="view" href="#">View</a><a class="download" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Animals</strong><div class="actions"><a class="view" href="#">View</a><a class="download" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Objects</strong><div class="actions"><a class="view" href="#">View</a><a class="download" href="download.html">Download</a></div></div>
       </div>
     </div>
+
     <!-- Accordion: Grammar -->
-    <button class="accordion w-full bg-blue-600 text-white font-semibold py-3 px-4 rounded-lg flex justify-between items-center text-base">
-      ✍️ Grammar & Structure
-    </button>
-    <div class="panel bg-white border border-gray-200 rounded-lg mb-3 p-4">
+    <div class="accordion">
+      <span class="icon">✍️</span>
+      <h2>Grammar & Structure</h2>
+    </div>
+    <div class="panel">
       <div class="materi-grid">
-        <div class="materi"><strong>Be (am, is, are)</strong><div class="actions mt-2"><a class="view" href="#">View</a><a class="download ml-2" href="download.html">Download</a></div></div>
-        <div class="materi"><strong>Nouns & Pronouns</strong><div class="actions mt-2"><a class="view" href="#">View</a><a class="download ml-2" href="download.html">Download</a></div></div>
-        <div class="materi"><strong>Articles (a, an, the)</strong><div class="actions mt-2"><a class="view" href="#">View</a><a class="download ml-2" href="download.html">Download</a></div></div>
-        <div class="materi"><strong>Adjectives</strong><div class="actions mt-2"><a class="view" href="#">View</a><a class="download ml-2" href="download.html">Download</a></div></div>
-        <div class="materi"><strong>Simple Present</strong><div class="actions mt-2"><a class="view" href="#">View</a><a class="download ml-2" href="download.html">Download</a></div></div>
-        <div class="materi"><strong>There is / There are</strong><div class="actions mt-2"><a class="view" href="#">View</a><a class="download ml-2" href="download.html">Download</a></div></div>
-        <div class="materi"><strong>Possessive</strong><div class="actions mt-2"><a class="view" href="#">View</a><a class="download ml-2" href="download.html">Download</a></div></div>
-        <div class="materi"><strong>Imperatives</strong><div class="actions mt-2"><a class="view" href="#">View</a><a class="download ml-2" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Be (am, is, are)</strong><div class="actions"><a class="view" href="#">View</a><a class="download" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Nouns & Pronouns</strong><div class="actions"><a class="view" href="#">View</a><a class="download" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Articles (a, an, the)</strong><div class="actions"><a class="view" href="#">View</a><a class="download" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Adjectives</strong><div class="actions"><a class="view" href="#">View</a><a class="download" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Simple Present</strong><div class="actions"><a class="view" href="#">View</a><a class="download" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>There is / There are</strong><div class="actions"><a class="view" href="#">View</a><a class="download" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Possessive</strong><div class="actions"><a class="view" href="#">View</a><a class="download" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Imperatives</strong><div class="actions"><a class="view" href="#">View</a><a class="download" href="download.html">Download</a></div></div>
       </div>
     </div>
+
     <!-- Accordion: Functions -->
-    <button class="accordion w-full bg-blue-600 text-white font-semibold py-3 px-4 rounded-lg flex justify-between items-center text-base">
-      💬 Functions
-    </button>
-    <div class="panel bg-white border border-gray-200 rounded-lg mb-3 p-4">
+    <div class="accordion">
+      <span class="icon">💬</span>
+      <h2>Functions</h2>
+    </div>
+    <div class="panel">
       <div class="materi-grid">
-        <div class="materi"><strong>Greetings & Introductions</strong><div class="actions mt-2"><a class="view" href="#">View</a><a class="download ml-2" href="download.html">Download</a></div></div>
-        <div class="materi"><strong>Personal Information</strong><div class="actions mt-2"><a class="view" href="#">View</a><a class="download ml-2" href="download.html">Download</a></div></div>
-        <div class="materi"><strong>Daily Activities</strong><div class="actions mt-2"><a class="view" href="#">View</a><a class="download ml-2" href="download.html">Download</a></div></div>
-        <div class="materi"><strong>Likes & Dislikes</strong><div class="actions mt-2"><a class="view" href="#">View</a><a class="download ml-2" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Greetings & Introductions</strong><div class="actions"><a class="view" href="#">View</a><a class="download" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Personal Information</strong><div class="actions"><a class="view" href="#">View</a><a class="download" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Daily Activities</strong><div class="actions"><a class="view" href="#">View</a><a class="download" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Likes & Dislikes</strong><div class="actions"><a class="view" href="#">View</a><a class="download" href="download.html">Download</a></div></div>
       </div>
     </div>
+
     <!-- Accordion: Text Types -->
-    <button class="accordion w-full bg-blue-600 text-white font-semibold py-3 px-4 rounded-lg flex justify-between items-center text-base">
-      📄 Text Types
-    </button>
-    <div class="panel bg-white border border-gray-200 rounded-lg mb-3 p-4">
+    <div class="accordion">
+      <span class="icon">📄</span>
+      <h2>Text Types</h2>
+    </div>
+    <div class="panel">
       <div class="materi-grid">
-        <div class="materi"><strong>Descriptive Text</strong><div class="actions mt-2"><a class="view" href="#">View</a><a class="download ml-2" href="download.html">Download</a></div></div>
-        <div class="materi"><strong>Simple Dialogues</strong><div class="actions mt-2"><a class="view" href="#">View</a><a class="download ml-2" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Descriptive Text</strong><div class="actions"><a class="view" href="#">View</a><a class="download" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Simple Dialogues</strong><div class="actions"><a class="view" href="#">View</a><a class="download" href="download.html">Download</a></div></div>
       </div>
     </div>
-    <a class="back-button font-semibold px-4 py-2 rounded-md mt-6" href="../index.html">
+
+    <a class="back-button" href="../index.html">
       <span>←</span> Kembali ke Dashboard
     </a>
-    <footer class="footer mt-8 pt-4 text-center text-gray-500 text-sm">
-      © 2025 Engdelve Repository — Ahmad Zaman Huri
-    </footer>
   </div>
+
+  <footer>
+    © 2025 Engdelve Repository — Ahmad Zaman Huri
+  </footer>
+
   <script>
     const accordions = document.querySelectorAll(".accordion");
     accordions.forEach((btn) => {
