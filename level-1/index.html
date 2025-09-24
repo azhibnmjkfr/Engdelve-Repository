@@ -1,32 +1,168 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Level 1 - Engdelve</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
-    body { font-family: Arial, sans-serif; padding:2rem; max-width:800px; margin:auto; }
-    h1 { color:#2d89ff; }
-    .materi { border:1px solid #ddd; padding:1rem; border-radius:8px; margin:1rem 0; }
-    .materi strong { font-size:1.1rem; }
-    .actions a { display:inline-block; margin-right:8px; padding:8px 14px;
-                 border-radius:6px; text-decoration:none; color:#fff; }
-    .view { background:#4caf50; }
-    .download { background:#ff9800; }
+    body {
+      background: linear-gradient(to bottom right, #eff6ff, #f0f9ff);
+      background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cg stroke-width='3' stroke='%23dc2626' opacity='0.07'%3E%3Cline x1='0' y1='200' x2='200' y2='0'/%3E%3C/g%3E%3Cg stroke-width='3' stroke='%237b1c1c' opacity='0.07'%3E%3Cline x1='-50' y1='200' x2='150' y2='0'/%3E%3Cline x1='50' y1='200' x2='250' y2='0'/%3E%3C/g%3E%3C/svg%3E");
+      background-repeat: repeat;
+    }
+    .accordion {
+      transition: all 0.25s ease;
+      margin-bottom: 0.4rem;
+    }
+    .accordion:hover {
+      background: linear-gradient(90deg, #2563eb, #1d4ed8);
+      transform: scale(1.01);
+    }
+    .accordion.active::after {
+      content: '▲';
+      float: right;
+    }
+    .accordion::after {
+      content: '▼';
+      float: right;
+    }
+    .panel {
+      transition: max-height 0.35s ease, opacity 0.35s ease;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+    }
+    .panel.active {
+      max-height: 1500px;
+      opacity: 1;
+    }
+    .materi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 0.6rem;
+    }
+    .materi {
+      transition: all 0.25s ease;
+      padding: 0.75rem;
+      border-radius: 6px;
+      background: #fff;
+    }
+    .materi:hover {
+      background-color: #f8fafc;
+      transform: translateY(-2px);
+      box-shadow: 0 3px 5px rgba(0, 0, 0, 0.08);
+    }
+    .download {
+      background: linear-gradient(90deg, #f97316, #ea580c);
+      transition: all 0.25s ease;
+    }
+    .download:hover {
+      background: linear-gradient(90deg, #ea580c, #d97706);
+      transform: scale(1.05);
+    }
+    .back-button {
+      background: linear-gradient(90deg, #2563eb, #1d4ed8);
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .back-button:hover {
+      background: linear-gradient(90deg, #1d4ed8, #1e3a8a);
+      transform: translateX(-3px);
+    }
+    .footer {
+      border-top: 1px solid #e5e7eb;
+    }
   </style>
 </head>
-<body>
-  <h1>Level 1</h1>
-  <p>Daftar materi pada Level 1</p>
+<body class="font-sans text-gray-800 min-h-screen flex justify-center">
+  <div class="max-w-5xl w-full mx-4 my-6 p-6 bg-white rounded-xl shadow-lg">
+    <h1 class="text-3xl font-bold text-blue-700 mb-2">Level 1 – Dasar (A1)</h1>
+    <p class="text-gray-600 mb-6 text-base">Fokus: Vocabulary dasar, kalimat sederhana, komunikasi sehari-hari.</p>
 
-  <div class="materi">
-    <strong>Simple Present</strong>
-    <div class="actions" style="margin-top:6px;">
-      <a class="view" href="#" target="_blank">View Online</a>
-      <a class="download" href="https://saweria.co/username" target="_blank">Download (Rp5.000)</a>
+    <!-- Accordion: Vocabulary -->
+    <button class="accordion w-full bg-blue-600 text-white font-semibold py-3 px-4 rounded-lg flex justify-between items-center text-base">
+      📘 Basic Vocabulary
+    </button>
+    <div class="panel bg-white border border-gray-200 rounded-lg mb-3 p-4">
+      <div class="materi-grid">
+        <div class="materi"><strong>Alphabet</strong><div class="actions mt-2"><a class="view bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded-md text-sm" href="#">View</a><a class="download text-white px-3 py-1 rounded-md text-sm ml-2" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Numbers</strong><div class="actions mt-2"><a class="view bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded-md text-sm" href="#">View</a><a class="download text-white px-3 py-1 rounded-md text-sm ml-2" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Days & Months</strong><div class="actions mt-2"><a class="view bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded-md text-sm" href="#">View</a><a class="download text-white px-3 py-1 rounded-md text-sm ml-2" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Colors</strong><div class="actions mt-2"><a class="view bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded-md text-sm" href="#">View</a><a class="download text-white px-3 py-1 rounded-md text-sm ml-2" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Family</strong><div class="actions mt-2"><a class="view bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded-md text-sm" href="#">View</a><a class="download text-white px-3 py-1 rounded-md text-sm ml-2" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Animals</strong><div class="actions mt-2"><a class="view bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded-md text-sm" href="#">View</a><a class="download text-white px-3 py-1 rounded-md text-sm ml-2" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Objects</strong><div class="actions mt-2"><a class="view bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded-md text-sm" href="#">View</a><a class="download text-white px-3 py-1 rounded-md text-sm ml-2" href="download.html">Download</a></div></div>
+      </div>
     </div>
+
+    <!-- Accordion: Grammar -->
+    <button class="accordion w-full bg-blue-600 text-white font-semibold py-3 px-4 rounded-lg flex justify-between items-center text-base">
+      ✍️ Grammar & Structure
+    </button>
+    <div class="panel bg-white border border-gray-200 rounded-lg mb-3 p-4">
+      <div class="materi-grid">
+        <div class="materi"><strong>Be (am, is, are)</strong><div class="actions mt-2"><a class="view bg-green-500 text-white px-3 py-1 rounded-md text-sm hover:bg-green-600" href="#">View</a><a class="download text-white px-3 py-1 rounded-md text-sm ml-2" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Nouns & Pronouns</strong><div class="actions mt-2"><a class="view bg-green-500 text-white px-3 py-1 rounded-md text-sm hover:bg-green-600" href="#">View</a><a class="download text-white px-3 py-1 rounded-md text-sm ml-2" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Articles (a, an, the)</strong><div class="actions mt-2"><a class="view bg-green-500 text-white px-3 py-1 rounded-md text-sm hover:bg-green-600" href="#">View</a><a class="download text-white px-3 py-1 rounded-md text-sm ml-2" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Adjectives</strong><div class="actions mt-2"><a class="view bg-green-500 text-white px-3 py-1 rounded-md text-sm hover:bg-green-600" href="#">View</a><a class="download text-white px-3 py-1 rounded-md text-sm ml-2" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Simple Present</strong><div class="actions mt-2"><a class="view bg-green-500 text-white px-3 py-1 rounded-md text-sm hover:bg-green-600" href="#">View</a><a class="download text-white px-3 py-1 rounded-md text-sm ml-2" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>There is / There are</strong><div class="actions mt-2"><a class="view bg-green-500 text-white px-3 py-1 rounded-md text-sm hover:bg-green-600" href="#">View</a><a class="download text-white px-3 py-1 rounded-md text-sm ml-2" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Possessive</strong><div class="actions mt-2"><a class="view bg-green-500 text-white px-3 py-1 rounded-md text-sm hover:bg-green-600" href="#">View</a><a class="download text-white px-3 py-1 rounded-md text-sm ml-2" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Imperatives</strong><div class="actions mt-2"><a class="view bg-green-500 text-white px-3 py-1 rounded-md text-sm hover:bg-green-600" href="#">View</a><a class="download text-white px-3 py-1 rounded-md text-sm ml-2" href="download.html">Download</a></div></div>
+      </div>
+    </div>
+
+    <!-- Accordion: Functions -->
+    <button class="accordion w-full bg-blue-600 text-white font-semibold py-3 px-4 rounded-lg flex justify-between items-center text-base">
+      💬 Functions
+    </button>
+    <div class="panel bg-white border border-gray-200 rounded-lg mb-3 p-4">
+      <div class="materi-grid">
+        <div class="materi"><strong>Greetings & Introductions</strong><div class="actions mt-2"><a class="view bg-green-500 text-white px-3 py-1 rounded-md text-sm hover:bg-green-600" href="#">View</a><a class="download text-white px-3 py-1 rounded-md text-sm ml-2" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Personal Information</strong><div class="actions mt-2"><a class="view bg-green-500 text-white px-3 py-1 rounded-md text-sm hover:bg-green-600" href="#">View</a><a class="download text-white px-3 py-1 rounded-md text-sm ml-2" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Daily Activities</strong><div class="actions mt-2"><a class="view bg-green-500 text-white px-3 py-1 rounded-md text-sm hover:bg-green-600" href="#">View</a><a class="download text-white px-3 py-1 rounded-md text-sm ml-2" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Likes & Dislikes</strong><div class="actions mt-2"><a class="view bg-green-500 text-white px-3 py-1 rounded-md text-sm hover:bg-green-600" href="#">View</a><a class="download text-white px-3 py-1 rounded-md text-sm ml-2" href="download.html">Download</a></div></div>
+      </div>
+    </div>
+
+    <!-- Accordion: Text Types -->
+    <button class="accordion w-full bg-blue-600 text-white font-semibold py-3 px-4 rounded-lg flex justify-between items-center text-base">
+      📄 Text Types
+    </button>
+    <div class="panel bg-white border border-gray-200 rounded-lg mb-3 p-4">
+      <div class="materi-grid">
+        <div class="materi"><strong>Descriptive Text</strong><div class="actions mt-2"><a class="view bg-green-500 text-white px-3 py-1 rounded-md text-sm hover:bg-green-600" href="#">View</a><a class="download text-white px-3 py-1 rounded-md text-sm ml-2" href="download.html">Download</a></div></div>
+        <div class="materi"><strong>Simple Dialogues</strong><div class="actions mt-2"><a class="view bg-green-500 text-white px-3 py-1 rounded-md text-sm hover:bg-green-600" href="#">View</a><a class="download text-white px-3 py-1 rounded-md text-sm ml-2" href="download.html">Download</a></div></div>
+      </div>
+    </div>
+
+    <a class="back-button text-white font-semibold px-4 py-2 rounded-md mt-6" href="../index.html">
+      <span>←</span> Kembali ke Dashboard
+    </a>
+
+    <footer class="footer mt-8 pt-4 text-center text-gray-500 text-sm">
+      © 2025 Engdelve Repository — Ahmad Zaman Huri
+    </footer>
   </div>
 
-  <p><a href="../index.html">← Kembali ke Dashboard</a></p>
+  <script>
+    const accordions = document.querySelectorAll(".accordion");
+    accordions.forEach((btn) => {
+      btn.addEventListener("click", function () {
+        const isActive = this.classList.contains("active");
+        accordions.forEach((b) => {
+          b.classList.remove("active");
+          b.nextElementSibling.classList.remove("active");
+        });
+        if (!isActive) {
+          this.classList.add("active");
+          this.nextElementSibling.classList.add("active");
+        }
+      });
+    });
+  </script>
 </body>
 </html>
