@@ -5,19 +5,53 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Engdelve Repository</title>
   <style>
-    body { font-family: Arial, sans-serif; text-align:center; padding:3rem; }
-    h1 { margin-bottom:0.5rem; }
-    p { color:#555; }
-    .btn { display:inline-block; margin:1rem; padding:12px 20px;
-           background:#2d89ff; color:#fff; text-decoration:none; border-radius:8px; }
+    body { margin:0; font-family: Arial, sans-serif; background:#f4f6f9; color:#333; }
+    header { background:#2d89ff; color:white; padding:2rem; text-align:center; }
+    header h1 { margin:0; font-size:2rem; }
+    header p { margin-top:0.5rem; font-size:1rem; color:#e0eaff; }
+
+    .container { max-width:900px; margin:2rem auto; padding:0 1rem; }
+    .levels { display:grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+              gap:1.5rem; margin-top:2rem; }
+    .card { background:white; border-radius:10px; padding:1.5rem;
+            box-shadow:0 2px 6px rgba(0,0,0,0.1); text-align:center; }
+    .card h2 { margin:0.5rem 0; color:#2d89ff; }
+    .card p { font-size:0.9rem; color:#666; }
+    .card a { display:inline-block; margin-top:1rem; padding:10px 16px;
+              background:#2d89ff; color:white; text-decoration:none; border-radius:6px; }
+    .card a:hover { background:#1c63c7; }
+    footer { text-align:center; padding:1rem; font-size:0.85rem; color:#777; margin-top:2rem; }
   </style>
 </head>
 <body>
-  <h1>Welcome to Engdelve Repository</h1>
-  <p>Pilih level untuk melihat materi Bahasa Inggris</p>
+  <header>
+    <h1>Welcome to Engdelve Repository</h1>
+    <p>Bank materi Bahasa Inggris untuk guru & siswa</p>
+  </header>
 
-  <a class="btn" href="level-1/index.html">Level 1</a>
-  <a class="btn" href="level-2/index.html">Level 2</a>
-  <a class="btn" href="level-3/index.html">Level 3</a>
+  <div class="container">
+    <h2 style="text-align:center;">Pilih Level</h2>
+    <div class="levels">
+      <div class="card">
+        <h2>Level 1</h2>
+        <p>Dasar-dasar grammar & tenses sederhana.</p>
+        <a href="level-1/index.html">Masuk</a>
+      </div>
+      <div class="card">
+        <h2>Level 2</h2>
+        <p>Pengembangan tenses & latihan menengah.</p>
+        <a href="level-2/index.html">Masuk</a>
+      </div>
+      <div class="card">
+        <h2>Level 3</h2>
+        <p>Tenses lanjutan & keterampilan kompleks.</p>
+        <a href="level-3/index.html">Masuk</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 Engdelve Repository — Belajar Bahasa Inggris lebih mudah
+  </footer>
 </body>
 </html>
